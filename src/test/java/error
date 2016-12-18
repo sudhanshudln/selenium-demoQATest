@@ -1,0 +1,3 @@
+org.openqa.selenium.NoSuchSessionException: Session ID is null. Using WebDriver after calling quit()?
+
+solution: 
