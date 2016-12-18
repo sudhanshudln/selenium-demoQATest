@@ -11,5 +11,6 @@ public class Constant {
 	public static String Firefox_Chrome="webdriver.chrome.driver";
 	public static String Firefox_IE="webdriver.IE.driver";
 	
+	// go to home page 
 	public static String url="http://demoqa.com/registration/";
 }
