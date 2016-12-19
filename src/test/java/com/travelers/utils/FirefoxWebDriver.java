@@ -4,13 +4,19 @@ import static com.travelers.config.Constant.*;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-public class FirefoxBrowser implements Browser{	
-	
-	@Override
-	public WebDriver getWebDriver() {
-		System.setProperty(Firefox_Driver,PATH_FIREFOX);
-		WebDriver driver=new FirefoxDriver();	
-		return driver;
+public class FirefoxWebDriver {		
+	private static FirefoxDriver INSTANCE=null;	
+	private FirefoxWebDriver(){};	
+	public static FirefoxDriver getFirefoxWebDriver() {
+		if(INSTANCE==null){
+			synchronized (FirefoxDriver.class) {
+				if(INSTANCE==null){
+					System.setProperty(Firefox_Driver,PATH_FIREFOX);
+					INSTANCE=new FirefoxDriver();
+				}
+			}
+		}
+		return INSTANCE;
 	}
 
 }

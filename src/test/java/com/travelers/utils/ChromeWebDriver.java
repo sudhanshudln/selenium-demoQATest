@@ -3,16 +3,17 @@ package com.travelers.utils;
 import static com.travelers.config.Constant.*;
 
 import org.openqa.selenium.WebDriver;
-public class ChromeDriver {	
-	private static WebDriver INSTANCE;
-	private ChromeDriver(){};	
+import org.openqa.selenium.chrome.ChromeDriver;
+public class ChromeWebDriver {	
+	private static ChromeDriver INSTANCE;
+	private ChromeWebDriver(){};	
 	
-	public static WebDriver getChromeWebDriver() {
+	public static ChromeDriver getChromeWebDriver() {
 		if(INSTANCE==null){
-			synchronized (ChromeDriver.INSTANCE) {
+			synchronized (ChromeWebDriver.class) {
 				if(INSTANCE==null){
 					System.setProperty(Firefox_Driver,PATH_FIREFOX);
-					INSTANCE=(WebDriver)new ChromeDriver();
+					INSTANCE=new ChromeDriver();
 				}
 			}
 		}		

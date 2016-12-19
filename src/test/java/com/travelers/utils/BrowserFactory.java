@@ -5,12 +5,12 @@ public class BrowserFactory {
 	public static WebDriver getBrowser(String browserName) {
 		WebDriver driver = null;
 		switch (browserName) {
-		case "Firefox":
-			FirefoxBrowser ffox= new FirefoxBrowser();		
-			driver = ffox.getWebDriver();		
+		case "Firefox":			
+			driver = FirefoxWebDriver.getFirefoxWebDriver();		
 			break;
-		default :
-			System.out.println ("no browser found...");	
+		case "Chrome":			
+			driver = ChromeWebDriver.getChromeWebDriver();		
+			break;	
 		}		
 		return driver;
 	}

@@ -3,6 +3,8 @@ package com.travelers.test;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -11,29 +13,29 @@ import com.travelers.page.RegistrationPage;
 import com.travelers.utils.BrowserFactory;
 
 public class RegistrationTest {
-	private WebDriver firefoxDriver=null;
-	private RegistrationPage registration ;
-	
+	WebDriver driver;
+	RegistrationPage regPage;
+
 	@BeforeTest
 	public void setup(){
-		firefoxDriver= BrowserFactory.getBrowser("Firefox");
-		firefoxDriver.get(Constant.url);
-		firefoxDriver.manage().window().maximize();
-		firefoxDriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		registration= new RegistrationPage(firefoxDriver);
+		driver= BrowserFactory.getBrowser("Firefox");	
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);		
+		driver.get(Constant.url);
+		System.out.println("sudhansh>>>>>>>>"+driver.getTitle());
+
 	}
 	
 	@Test
 	public void testRegistration(){
-		
-	//	assert(registration.isShown());
-		registration.setFirstName("sudhanshu");
+		regPage= new RegistrationPage(driver);
+		assert(regPage.isShown());
+		regPage.setFirstName("sudhanshu");
 	}
 	
-	@Test
+	@AfterTest
 	public void clean(){
-		firefoxDriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		firefoxDriver.quit();
+		driver.quit();
 	}
 
 }
