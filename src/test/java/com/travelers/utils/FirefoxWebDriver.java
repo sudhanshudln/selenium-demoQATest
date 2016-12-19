@@ -2,7 +2,6 @@ package com.travelers.utils;
 
 import static com.travelers.config.Constant.*;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 public class FirefoxWebDriver {		
 	private static FirefoxDriver INSTANCE=null;	
